@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param("ssssi", $titulo, $descripcion, $nombre_foto, $fecha_hora, $id_usuario);
         
         if ($stmt->execute()) {
+            registrarAccion($conexion, "Creó una nueva noticia titulada: '$titulo'");
             header("Location: noticias.php");
             exit();
         } else {

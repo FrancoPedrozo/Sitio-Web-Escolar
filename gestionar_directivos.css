@@ -1,0 +1,115 @@
+body {
+    background-color: #1b1a1a;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.form-card {
+    background-color: #242323;
+    border: 1.5px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 40px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.form-card h2 {
+    font-family: "Oswald", sans-serif;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #dddddd;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    background-color: #1a1a1a;
+    border: 1.5px solid #333333;
+    border-radius: 8px;
+    padding: 12px 15px;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    border-color: #3dff67;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.btn-guardar {
+    width: 100%;
+    background-color: #3dff67;
+    color: #1b1a1a;
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(61, 255, 103, 0.2);
+}
+
+.btn-guardar:hover {
+    background-color: #31d454;
+    transform: translateY(-2px);
+}
+
+.volver-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #a6a6a6;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.volver-link:hover {
+    color: white;
+}
+
+.error-msg {
+    background-color: rgba(255, 77, 77, 0.15);
+    border: 1px solid #ff4d4d;
+    color: #ff4d4d;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    text-align: center;
+}

@@ -46,21 +46,59 @@ body {
     object-fit: contain;
     z-index: 5;
 }
+
+/* Ocultar checkbox del menú hamburguesa */
+.menu-checkbox {
+    display: none;
+}
+
+/* Botón hamburguesa visible en pantallas chicas o adaptadas */
+.menu-btn {
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 10000;
+}
+.menu-btn span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Contenedor del menú desplegable */
 .nav-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    width: 100vw;
+    height: auto; /* Hace que se adapte únicamente a la altura del texto */
+    background-color: rgba(1, 32, 60, 0.95); 
+    backdrop-filter: blur(10px); 
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 35px 20px 45px 20px; /* Margen interno superior e inferior más compacto */
+    gap: 20px; /* Espaciado interno reducido */
+    transition: top 0.4s ease-in-out;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    z-index: 9998;
 }
 .nav-links {
     display: flex;
-    list-style: none;
-    gap: 45px;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
     margin: 0 auto;
+    list-style: none; /* Elimina los puntos o viñetas de lista */
 }
 .nav-links a {
     position: relative; 
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 600; 
     letter-spacing: 1.5px;
     text-decoration: none;
@@ -86,6 +124,10 @@ body {
 .btn-sesion {
     cursor: pointer;
     height: 42px; 
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    margin: 0 auto;
     padding: 0 24px; 
     background-color: #01203c;
     color: white;
@@ -125,23 +167,21 @@ body {
 .btn-sesion:active {
     transform: scale(0.96);
 }
-.menu-checkbox {
-    display: none;
+
+/* ACCIÓN DEL CHECKBOX */
+.menu-checkbox:checked ~ .nav-container {
+    top: 80px; 
 }
-.menu-btn {
-    display: none;
-    cursor: pointer;
-    flex-direction: column;
-    gap: 5px;
+.menu-checkbox:checked ~ .menu-btn span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
 }
-.menu-btn span {
-    display: block;
-    width: 28px;
-    height: 3px;
-    background-color: white;
-    border-radius: 2px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+.menu-checkbox:checked ~ .menu-btn span:nth-child(2) {
+    opacity: 0;
 }
+.menu-checkbox:checked ~ .menu-btn span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
 .item {
     position: relative; 
     font-size: 15px;
@@ -155,7 +195,7 @@ body {
 }
 .wallper {
     position: relative;
-    height: 70vh;
+    height: 80vh;
     width: 100%;
     background-image: url(imgs/especialidades-wallper.png); 
     background-position: center;
@@ -337,54 +377,6 @@ footer {
     }
     .titulo {
         padding-left: 0;
-    }
-    .nav-container {
-        display: none; 
-    }
-    .menu-btn {
-        display: flex;
-        z-index: 6;
-    }
-    .nav-container {
-        display: flex;
-        position: fixed;
-        top: -100%;
-        left: 0;
-        width: 100%;
-        height: auto;
-        background-color: #01203cd8; 
-        backdrop-filter: blur(10px); 
-        flex-direction: column;
-        padding: 50px 20px;
-        gap: 30px;
-        transition: top 0.4s ease-in-out;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-    .nav-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-    .nav-links a {
-        font-size: 18px;
-    }
-    .btn-sesion {
-        width: 80%;
-        max-width: 300px;
-        text-align: center;
-        margin: 0 auto;
-    }
-    .menu-checkbox:checked ~ .nav-container {
-        top: 80px; 
-    }
-    .menu-checkbox:checked ~ .menu-btn span:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-    .menu-checkbox:checked ~ .menu-btn span:nth-child(2) {
-        opacity: 0;
-    }
-    .menu-checkbox:checked ~ .menu-btn span:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
     }
 }
 @media (max-width: 768px) {

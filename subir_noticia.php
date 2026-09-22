@@ -83,21 +83,36 @@ if (!isset($_SESSION['usuario'])) {
     </style>
 </head>
 <body>
-    <header class="bar">
+     <header class="bar">
         <img src="imgs/logo.png" alt="logo escuela" class="logo-img">
+        
         <input type="checkbox" id="menu-toggle" class="menu-checkbox">
         <label for="menu-toggle" class="menu-btn">
-            <span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </label>
+
         <nav class="nav-container">
             <ul class="nav-links">
-                <li><a href="index.php">INICIO</a></li>
+                <li><a href="index.php#link-contacto">CONTACTO</a></li>
                 <li><a href="noticias.php">NOTICIAS</a></li>
-                <li><a href="especialidades.php">ESPECIALIDADES</a></li>
-                <li><a href="">HISTORIA</a></li>
-                <li><a href="directivos.php">DIRECTIVOS</a></li>
+                <li><a href="especialidades.php">CICLOS TECNICOS PROFESIONALES</a></li>
+                <li><a href="historia.php">¿QUIENES SOMOS?</a></li>
+                <li><a href="directivos.php">EQUIPO DE CONDUCCION</a></li>
+                
+                <?php 
+                if (isset($_SESSION['id_tipo']) && $_SESSION['id_tipo'] == 1) {
+                    echo '<li><a href="subir_noticia.php" style="color: #ffcc00; font-weight: bold;">PANEL ADMIN</a></li>';
+                }
+                ?>
             </ul>
-            <a href="cerrar_sesion.php"><button class="btn-sesion">CERRAR SESIÓN</button></a>
+
+            <?php if (isset($_SESSION['usuario'])): ?>
+                <a href="cerrar_sesion.php"><button class="btn-sesion">CERRAR SESIÓN</button></a>
+            <?php else: ?>
+                <a href="iniciarsesion.php"><button class="btn-sesion">INICIAR SESIÓN</button></a>
+            <?php endif; ?>
         </nav>
     </header>
 
