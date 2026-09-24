@@ -14,6 +14,9 @@ require 'conexion.php';
         <div class="noticias-header">
             <h1>Novedades Institucionales</h1>
             <p>Enterate de los últimos eventos, comunicados oficiales y actividades académicas.</p>
+            <?php if (isset($_SESSION['id_tipo']) && $_SESSION['id_tipo'] == 1): ?>
+                <a href="subir_noticia.php" class="btn-subir-noticia">+ SUBIR NUEVA NOTICIA</a>
+            <?php endif; ?>
         </div>
 
         <div class="noticias-grid">
@@ -31,12 +34,10 @@ require 'conexion.php';
                     $texto_mostrado = $es_largo ? mb_substr($texto_completo, 0, $limite) . '...' : $texto_completo;
             ?>
             <div class="noticia-card">
-                <!-- Imagen de la tarjeta -->
                 <div class="card-img-wrapper">
                     <div class="card-img" style="background-image: url('<?php echo $imagen_ruta; ?>');"></div>
                 </div>
                 
-                <!-- Cuerpo de información interactivo para abrir el modal -->
                 <div class="card-info" 
                      onclick="abrirModal(this)"
                      data-titulo="<?php echo htmlspecialchars($row['Titulo_noticia'], ENT_QUOTES, 'UTF-8'); ?>"
@@ -52,7 +53,6 @@ require 'conexion.php';
                     <?php endif; ?>
                 </div>
 
-                <!-- Botones de administración (Editar / Borrar) solo visibles para Administradores -->
                 <?php if (isset($_SESSION['id_tipo']) && $_SESSION['id_tipo'] == 1): ?>
                     <div class="admin-acciones">
                         <a href="editar_noticia.php?id=<?php echo $id_noticia; ?>" class="btn-editar">Editar</a>
@@ -87,7 +87,6 @@ require 'conexion.php';
         </div>
     </footer>
 
-    <!-- Ventana Emergente (Modal) -->
     <div id="modalNoticia" class="modal-overlay">
         <div class="modal-content">
             <button class="modal-cerrar" onclick="cerrarModal()">&times;</button>
@@ -100,7 +99,6 @@ require 'conexion.php';
 
     <script>
         function abrirModal(elemento) {
-            // Buscamos la sección card-info dentro de la tarjeta
             const info = elemento.querySelector('.card-info') || elemento;
             
             const titulo = info.getAttribute('data-titulo');
