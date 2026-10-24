@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 24-09-2026 a las 01:41:01
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Servidor: sql313.infinityfree.com
+-- Tiempo de generación: 02-10-2026 a las 03:18:49
+-- Versión del servidor: 11.4.13-MariaDB
+-- Versión de PHP: 7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,8 +19,31 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `tecnica3`
+-- Base de datos: `if0_43013810_tecnica3`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `directivos`
+--
+
+CREATE TABLE `directivos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `cargo` varchar(100) NOT NULL,
+  `descripcion` text DEFAULT NULL,
+  `turno` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `directivos`
+--
+
+INSERT INTO `directivos` (`id`, `nombre`, `cargo`, `descripcion`, `turno`) VALUES
+(7, 'Ignacio Acosta', 'Vicedirector', 'Descripcion', 'Turno Noche'),
+(8, 'Andrea Tucat', 'Directora', 'Descripcion', 'Turno Tarde'),
+(9, 'Andrea Tucat', 'Directora', 'Descripcion', 'Turno Mañana');
 
 -- --------------------------------------------------------
 
@@ -43,7 +67,7 @@ INSERT INTO `especialidades_img` (`id`, `nombre_especialidad`, `imagen_ruta`) VA
 (3, 'Informática', ''),
 (4, 'Construcciones', 'uploads/esp_4_6a82368a49cb1.jpeg'),
 (5, 'Electromecánica', 'uploads/esp_5_6a82367e26256.jpeg'),
-(6, 'Automotores', 'uploads/esp_6_6a823671d4932.jpeg');
+(6, 'Automotores', 'uploads/esp_6_6abb69d195d7d.jpg');
 
 -- --------------------------------------------------------
 
@@ -84,7 +108,8 @@ INSERT INTO `galeria_institucional` (`id`, `titulo`, `imagen_ruta`, `fecha_subid
 (42, 'Nuestra escuela 5', 'uploads/img_6a8246141db27.png', '2026-08-16 23:21:56', 1),
 (43, 'Talleres1', 'uploads/img_6a8246b874b2e.jpg', '2026-08-16 23:24:40', 3),
 (44, 'Nuestra escuela 6', 'uploads/img_6a82487204316.jpg', '2026-08-16 23:32:02', 1),
-(45, 'Nuestra escuela 7', 'uploads/img_6a82488163e7d.jpg', '2026-08-16 23:32:17', 1);
+(45, 'Nuestra escuela 7', 'uploads/img_6a82488163e7d.jpg', '2026-08-16 23:32:17', 1),
+(46, 'hola', 'uploads/img_6abb69e64ca3f.png', '2026-09-29 12:33:58', 3);
 
 -- --------------------------------------------------------
 
@@ -106,7 +131,23 @@ CREATE TABLE `historial_cambios` (
 
 INSERT INTO `historial_cambios` (`id`, `usuario`, `id_usuario`, `accion`, `fecha`) VALUES
 (1, 'admin', NULL, 'Creó una nueva noticia titulada: \'dasddsad\'', '2026-09-23 20:39:39'),
-(2, 'admin', NULL, 'Creó una nueva noticia titulada: \'gfdgfd\'', '2026-09-23 20:39:47');
+(2, 'admin', NULL, 'Creó una nueva noticia titulada: \'gfdgfd\'', '2026-09-23 20:39:47'),
+(3, 'admin', NULL, 'Creó una nueva noticia titulada: \'prueba hola123\'', '2026-09-29 04:43:17'),
+(4, 'admin', NULL, 'Agregó un nuevo directivo: \'Juan Perez\'', '2026-09-29 04:54:32'),
+(5, 'admin', NULL, 'Agregó un nuevo directivo: \'Juan Perez\'', '2026-09-29 04:55:03'),
+(6, 'admin', NULL, 'Agregó un nuevo directivo: \'Juan Perez\'', '2026-09-29 04:55:12'),
+(7, 'admin', NULL, 'Eliminó al directivo con ID: 3', '2026-09-29 04:56:33'),
+(8, 'admin', NULL, 'Agregó un nuevo directivo: \'Julian Lopez\'', '2026-09-29 05:03:32'),
+(9, 'admin', NULL, 'Agregó un nuevo directivo: \'dasda\'', '2026-09-29 05:05:30'),
+(10, 'admin', NULL, 'Eliminó al directivo con ID: 4', '2026-09-29 05:08:56'),
+(11, 'admin', NULL, 'Agregó un nuevo directivo: \'sasa\'', '2026-09-30 15:11:06'),
+(12, 'admin', NULL, 'Eliminó al directivo con ID: 6', '2026-09-30 15:11:23'),
+(13, 'admin', NULL, 'Eliminó al directivo con ID: 1', '2026-09-30 15:11:25'),
+(14, 'admin', NULL, 'Eliminó al directivo con ID: 5', '2026-09-30 15:11:27'),
+(15, 'admin', NULL, 'Eliminó al directivo con ID: 2', '2026-09-30 15:11:29'),
+(16, 'admin', NULL, 'Agregó un nuevo directivo: \'Ignacio Acosta\'', '2026-09-30 15:12:19'),
+(17, 'admin', NULL, 'Agregó un nuevo directivo: \'Andrea Tucat\'', '2026-09-30 15:13:35'),
+(18, 'admin', NULL, 'Agregó un nuevo directivo: \'Andrea Tucat\'', '2026-09-30 15:13:55');
 
 -- --------------------------------------------------------
 
@@ -138,7 +179,8 @@ INSERT INTO `noticias` (`Id_noticia`, `Fecha_noticia`, `Titulo_noticia`, `Descri
 (8, '2026-09-24 01:39:10', '12313', 'dsadad', 'logo.png', 1),
 (9, '2026-09-24 01:39:16', 'dasd', 'sdsad', 'Portada_construcciones.jpeg', 1),
 (10, '2026-09-24 01:39:39', 'dasddsad', 'sdsad', 'Portada_construcciones.jpeg', 1),
-(11, '2026-09-24 01:39:47', 'gfdgfd', 'gfgdfgfdg', 'Portada_electromecanica.jpeg', 1);
+(11, '2026-09-24 01:39:47', 'gfdgfd', 'gfgdfgfdg', 'Portada_electromecanica.jpeg', 1),
+(12, '2026-09-29 09:43:17', 'prueba hola123', 'lgdfpkgdfkpg´dfklgfd+´kg,df+lgkdf´lgkdfgódgofdlgdfgdfg', 'login.png', 1);
 
 -- --------------------------------------------------------
 
@@ -188,11 +230,20 @@ INSERT INTO `usuarios` (`Id_usuario`, `usuario`, `Ape_usu`, `Nom_usu`, `Correo_u
 (7, 'ada', NULL, NULL, '11231@gmail.com', '$2y$10$S0TC.qlrFv8SK1Est0W9o.kj9Gfq4cog3Q0hLetK9UTKH3Ydxt0vW', 2),
 (8, 'adawa', NULL, NULL, 'adwad@aed.com', '$2y$10$xOQZzUSRXo5dhJNd58awn.s5ofYjvaDzelWs/5AK7N/Edpsch0Amm', 2),
 (9, 'dawda', NULL, NULL, 'fara@afaa.com', '$2y$10$3NvcQrmhErMd06KgRS/3heQrpyTpod6ZxFBhkZnSaHDpQCRO2uJoq', 2),
-(11, 'admin', NULL, NULL, 'admin@gmail.com', '$2y$10$09zIPQ0mHFY9md8xKGJXJuQxlBKY27b2V971F1DeU.NBrPddtD8Gq', 1);
+(11, 'admin', NULL, NULL, 'admin@gmail.com', '$2y$10$09zIPQ0mHFY9md8xKGJXJuQxlBKY27b2V971F1DeU.NBrPddtD8Gq', 1),
+(13, 'sfasfas', NULL, NULL, 'admin@correo.com', '$2y$12$vGhPk2q87wrgF2Bjx3D4aOFSTINw7E0v7s4Uou2P2JePfgF1imPm2', 2),
+(14, 'hola', NULL, NULL, 'hola@gmail.com', '$2y$12$FXOUn01zzcoeUcrU8YJSne/5sesUQ.5np4JgVIHknABiyeISjLOSK', 2),
+(15, 'sadsad', NULL, NULL, 'hola@gmail.com', '$2y$12$elggpGLUgJQ/xJ3V1FMqmOhd5Uz7lyQJHnVa1GFVMQez7bEfvr0VW', 2);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `directivos`
+--
+ALTER TABLE `directivos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `especialidades_img`
@@ -238,6 +289,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `directivos`
+--
+ALTER TABLE `directivos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT de la tabla `especialidades_img`
 --
 ALTER TABLE `especialidades_img`
@@ -247,19 +304,19 @@ ALTER TABLE `especialidades_img`
 -- AUTO_INCREMENT de la tabla `galeria_institucional`
 --
 ALTER TABLE `galeria_institucional`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_cambios`
 --
 ALTER TABLE `historial_cambios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `noticias`
 --
 ALTER TABLE `noticias`
-  MODIFY `Id_noticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Id_noticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `tipousu`
@@ -271,7 +328,7 @@ ALTER TABLE `tipousu`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `Id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas

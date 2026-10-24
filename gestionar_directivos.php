@@ -20,7 +20,7 @@ if ($accion === 'borrar' && $id > 0) {
         if (function_exists('registrarAccion')) {
             registrarAccion($conexion, "Eliminó al directivo con ID: $id");
         }
-        header("Location: directivos.php");
+        header("Location: equipo.php");
         exit();
     } else {
         $error_borrar = "Error al eliminar el registro: " . mysqli_error($conexion);
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        header("Location: directivos.php");
+        header("Location: equipo.php");
         exit();
     } else {
         $error = "Error al guardar en la base de datos: " . mysqli_error($conexion);
@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="btn-guardar">Guardar Cambios</button>
         </form>
 
-        <a href="directivos.php" class="volver-link">← Volver a Directivos</a>
+        <a href="equipo.php" class="volver-link">← Volver a Directivos</a>
     </div>
 
 </body>

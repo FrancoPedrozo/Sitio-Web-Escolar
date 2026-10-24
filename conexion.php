@@ -1,29 +1,29 @@
 <?php
-$servidor = "localhost";
+$host = "localhost";
 $usuario = "root";
-$password = "";
-$base_datos = "tecnica3";
+$clave = "";
+$base_de_datos = "tecnica3";
 
-$conexion = mysqli_connect($servidor, $usuario, $password, $base_datos);
+$conexion = mysqli_connect($host, $usuario, $clave, $base_de_datos);
 
 if (!$conexion) {
-    die("Error de conexión: " . mysqli_connect_error());
+    die("Error de conexión local: " . mysqli_connect_error());
 }
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+mysqli_set_charset($conexion, "utf8mb4");
 
-function registrarAccion($conexion, $descripcion_accion) {
-    // Tomamos el usuario de la sesión
-    $usuario = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : 'Administrador Anónimo';
-    
-    // Usamos consultas preparadas para mayor seguridad al registrar la acción
-    $stmt = $conexion->prepare("INSERT INTO historial_cambios (usuario, accion) VALUES (?, ?)");
-    if ($stmt) {
-        $stmt->bind_param("ss", $usuario, $descripcion_accion);
-        $stmt->execute();
-        $stmt->close();
+// Agregar esta función aquí para que la reconozcan los procesadores
+if (!function_exists('registrarAccion')) {
+    function registrarAccion($conexion, $accion) {
+        $usuario = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : 'Sistema';
+        $id_usuario = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : NULL;
+        
+        $stmt = $conexion->prepare("INSERT INTO historial_cambios (usuario, id_usuario, accion) VALUES (?, ?, ?)");
+        if ($stmt) {
+            $stmt->bind_param("sis", $usuario, $id_usuario, $accion);
+            $stmt->execute();
+            $stmt->close();
+        }
     }
 }
 ?>
